@@ -1,23 +1,10 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
-const Home = () => {
+export const Home = () => {
+    
     return (
         <>
             Home Page!
         </>
     );
 }
-
-const  mapStateToProps = (state) => {
-    return {
-
-    }
-  }
-  
-  const mapDispatchToProps = (dispatch) => {
-    return {
-
-    }
-  }
-  export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -1,24 +1,15 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import {LoginForm} from '../components/LoginForm';
+import Container from 'react-bootstrap/Container'
+import { useSelector, useDispatch } from 'react-redux';
+import '../css/login.css';
 
-const Login = () => {
+export const Login = () => {
     return (
         <>
-            Login Page!
+        <main className="login-form">
+            <LoginForm />
+        </main>
+      
         </>
     );
 }
-
-
-const  mapStateToProps = (state) => {
-    return {
-
-    }
-  }
-  
-  const mapDispatchToProps = (dispatch) => {
-    return {
-
-    }
-  }
-  export default connect(mapStateToProps, mapDispatchToProps)(Login);

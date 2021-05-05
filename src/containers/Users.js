@@ -1,24 +1,9 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
-const Users = () => {
+export const Users = () => {
     return (
         <>
             Users Page!
         </>
     );
 }
-
-
-const  mapStateToProps = (state) => {
-    return {
-
-    }
-  }
-  
-  const mapDispatchToProps = (dispatch) => {
-    return {
-
-    }
-  }
-  export default connect(mapStateToProps, mapDispatchToProps)(Users);

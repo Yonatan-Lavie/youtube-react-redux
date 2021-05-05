@@ -1,29 +1,24 @@
-import Reacte, {Component} from 'react';
 import './css/App.css';
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
-import Home from './containers/Home';
-import Login from './containers/Login';
-import Users from './containers/Users';
-import User from './containers/User';
+import {Home} from './containers/Home';
+import {Login} from './containers/Login';
+import {Users} from './containers/Users';
+import {User} from './containers/User';
 
 
 
-class App extends Component {
-
-  render() {
-    // setTimeout(() => {
-    //   this.props.changeSiteName('Youtube Hello world');
-    // }, 2000)
-
+export const App = () => {
+    const siteName = useSelector(state => state.siteName);
+    const dispatch = useDispatch();
     return (
       <Router>          
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
 
-              <Navbar.Brand href="#home">{this.props.siteName}</Navbar.Brand>
+              <Navbar.Brand href="#home">{siteName}</Navbar.Brand>
               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               <Navbar.Collapse id="responsive-navbar-nav">
                 
@@ -41,6 +36,7 @@ class App extends Component {
                 </Nav>
                 <Nav>
                   <Nav.Link href="/login">Login</Nav.Link>
+                  <Nav.Link onClick={() => dispatch({ type: "CHANGE_SITE_NAME", payload: "new Site Name" })}>CHANGE_SITE_NAME</Nav.Link>
                 </Nav>
               
               </Navbar.Collapse>
@@ -55,25 +51,5 @@ class App extends Component {
       </Router>
 
     );
-  }
 }
 
-
-// function that get the new state and pass it on.
-const  mapStateToProps = (state) => {
-  return {
-    siteName: state.siteName
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    changeSiteName(newSiteName) {
-      dispatch({
-        type : "CHANGE_SITE_NAME",
-        payload: newSiteName
-      })
-    }
-  }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(App);
